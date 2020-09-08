@@ -10,6 +10,9 @@ namespace ismetles
     {
         static void Main(string[] args)
         {
+            
+            Console.ReadKey();
+   
         }
     }
 }
