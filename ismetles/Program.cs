@@ -17,6 +17,13 @@ namespace ismetles
 
             Console.WriteLine("Gép választása: {0}", lehetoseg[gepValasz]);
 
+            int jatekosValasz;
+
+            Console.WriteLine("Kő (0), Papír (1), Olló (2)");
+            Console.Write("Válassz: ");
+            jatekosValasz = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Játékos választása", lehetoseg[jatekosValasz]);
+
             Console.ReadKey();
    
         }
