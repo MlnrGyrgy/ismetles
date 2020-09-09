@@ -8,6 +8,20 @@ namespace ismetles
 {
     class Program
     {
+        static string[] lehetoseg = new string[] { "Kő", "Papír", "Olló" };
+        static int GepValasztasa()
+        {
+            Random vel = new Random();
+
+
+            return vel.Next(0, 3);
+        }
+        static int JatekosValasztas()
+        {
+            Console.WriteLine("Kő (0), Papír (1), Olló (2)");
+            Console.Write("Válassz: ");
+            return Convert.ToInt32(Console.ReadLine());
+        }
         static int EmberNyer(int gep, int ember)
         {
             if (ember == gep)//Döntetlen
@@ -35,6 +49,7 @@ namespace ismetles
         }
         static void EredmenyKiiras(int gep, int ember)
         {
+                        Console.WriteLine("Gép: {0}--- Játékos: {1}", lehetoseg[gep], lehetoseg[ember]);
             switch (EmberNyer(gep, ember))
             {
                 case 0:
@@ -51,21 +66,16 @@ namespace ismetles
         }
         static void Main(string[] args)
         {
-            Random vel = new Random();
-            string[] lehetoseg = new string[] { "Kő", "Papír", "Olló" };
-
-            int gepValasz = vel.Next(0, 3);
+           
 
             //Console.WriteLine("Gép választása: {0}", lehetoseg[gepValasz]);
 
-            int jatekosValasz;
+           
+            Console.WriteLine("Játékos választása", lehetoseg[]);
 
-            Console.WriteLine("Kő (0), Papír (1), Olló (2)");
-            Console.Write("Válassz: ");
-            jatekosValasz = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Játékos választása", lehetoseg[jatekosValasz]);
+            int gepValasz = GepValasztasa();
 
-            Console.WriteLine("Gép: {0}--- Játékos: {1}", lehetoseg[gepValasz], lehetoseg[jatekosValasz]);
+            int jatekosValasz = JatekosValasztas();
 
             EredmenyKiiras(gepValasz, jatekosValasz);
             
