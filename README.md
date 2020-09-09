@@ -16,3 +16,5 @@
         - 1:Gép nyer
         -2: Ember nyer
 - [x]Kiírjuk az eredményt
+- Kiírás külön metódusba
+      
