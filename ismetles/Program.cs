@@ -66,21 +66,40 @@ namespace ismetles
         }
         static void Main(string[] args)
         {
-           
+            bool tovabb = true;
 
             //Console.WriteLine("Gép választása: {0}", lehetoseg[gepValasz]);
+            //Console.WriteLine("Játékos választása: {0}", lehetoseg[JatekosValasztas]);
 
-           
-            Console.WriteLine("Játékos választása", lehetoseg[]);
+            while (tovabb)
+            {
 
-            int gepValasz = GepValasztasa();
+                int gepValasz = GepValasztasa();
 
-            int jatekosValasz = JatekosValasztas();
+                int jatekosValasz = JatekosValasztas();
 
-            EredmenyKiiras(gepValasz, jatekosValasz);
+                EredmenyKiiras(gepValasz, jatekosValasz);
+
+                tovabb = AkarJatszani();
+            }
             
             Console.ReadKey();
    
+        }
+
+        private static bool AkarJatszani()
+        {
+            Console.WriteLine("---------------------------------------------------------------------------------------");
+            Console.Write("Tovább? [i/n]: ");
+            string valasz = Console.ReadLine().ToLower();
+            if (valasz=="i")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
