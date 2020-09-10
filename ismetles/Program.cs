@@ -8,6 +8,9 @@ namespace ismetles
 {
     class Program
     {
+        static int gepNyer = 0;
+        static int jatekosNyer = 0;
+        static int menet = 0;
         static string[] lehetoseg = new string[] { "Kő", "Papír", "Olló" };
         static int GepValasztasa()
         {
@@ -37,19 +40,24 @@ namespace ismetles
                     (ember == 2 && gep == 0)
                     )//Gép nyer
 
-            {               
+            {
                 Console.WriteLine("Gép nyert!");
+                gepNyer++;
                 return 1;
+               
             }
             else //Játékos nyer
             {
                 Console.WriteLine("Nyertél");
+                jatekosNyer++;
                 return 2;
+                
             }
         }
+
         static void EredmenyKiiras(int gep, int ember)
         {
-                        Console.WriteLine("Gép: {0}--- Játékos: {1}", lehetoseg[gep], lehetoseg[ember]);
+            Console.WriteLine("Gép: {0}--- Játékos: {1}", lehetoseg[gep], lehetoseg[ember]);
             switch (EmberNyer(gep, ember))
             {
                 case 0:
@@ -73,6 +81,7 @@ namespace ismetles
 
             while (tovabb)
             {
+                menet++;
 
                 int gepValasz = GepValasztasa();
 
@@ -82,9 +91,9 @@ namespace ismetles
 
                 tovabb = AkarJatszani();
             }
-            
+            statisztikaKiiras();
             Console.ReadKey();
-   
+
         }
 
         private static bool AkarJatszani()
@@ -92,7 +101,7 @@ namespace ismetles
             Console.WriteLine("---------------------------------------------------------------------------------------");
             Console.Write("Tovább? [i/n]: ");
             string valasz = Console.ReadLine().ToLower();
-            if (valasz=="i")
+            if (valasz == "i")
             {
                 return true;
             }
@@ -100,6 +109,10 @@ namespace ismetles
             {
                 return false;
             }
+        }
+        private static void statisztikaKiiras()
+        {
+            Console.WriteLine("Menetek száma: {0}" + "\t Játékos győzelmének száma {1}" + "\t Gép győzelmének száma {2}", menet,jatekosNyer,gepNyer);
         }
     }
 }
