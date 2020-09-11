@@ -94,6 +94,7 @@ namespace ismetles
                 tovabb = AkarJatszani();
             }
             statisztikaKiiras();
+            statisztikaFajlba();
             Console.ReadKey();
 
         }
@@ -119,7 +120,6 @@ namespace ismetles
         private static void statisztikaFajlbol()
         {
             StreamReader stat = new StreamReader("Statisztika.txt");
-            int x = 0;
             while (!stat.EndOfStream)
             {
                 string[] szovegAdat =stat.ReadLine().Split(';');
@@ -131,7 +131,20 @@ namespace ismetles
                 Console.WriteLine("{0} {1} {2}", sor[0],sor[1],sor[2]);
             }
             stat.Close();
-            Console.WriteLine("--------------> Statisztika vége <--------------");
+            Console.WriteLine("----------------> Statisztika vége <----------------");
+        }
+        private static void statisztikaFajlba()
+        {
+          string adat =  menet.ToString() + ";" + jatekosNyer.ToString() + ";" + gepNyer.ToString();
+            //FileStream ki = new FileStream("Statisztika.txt",FileMode.Append);
+            StreamWriter kiir = new StreamWriter("Statisztika.txt",true);
+            kiir.WriteLine(adat);
+            //kiir.WriteLine("{0};", menet);
+            // kiir.Write("{0};", jatekosNyer);
+            //kiir.Write("{0}", gepNyer);
+            kiir.Close();
+            
+
         }
     }
 }
